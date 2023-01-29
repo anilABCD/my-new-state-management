@@ -9,12 +9,12 @@ interface Props {}
 function Products(props: Props) {
 
     const [updateState, setUpdateState] = useState<string>("");
-    let [stateId, setStateId] = useState<string>("");
-    console.log(stateId)
+    // let [stateId, setStateId] = useState<string>("");
+    // console.log(stateId)
     useEffect(()=>{
-        let uuid = uuidv4();
-        setStateId(uuid);
-        globalState.register(uuid, setUpdateState);
+        // let uuid = uuidv4();
+        // setStateId(uuid);
+        globalState.register( setUpdateState);
     },[])
 
     return (
@@ -23,9 +23,9 @@ function Products(props: Props) {
           globalState.products.map((item, index)=><>
           
           {item._increment}&nbsp;
-          {stateId}
+          {/* {stateId} */}
 
-          <button onClick={() => {item.incrementNumber(stateId)}}>product {index}</button>
+          <button onClick={() => {item.incrementNumber()}}>product {index}</button>
           
           </>)
         }

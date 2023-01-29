@@ -12,13 +12,13 @@ class State {
 
     registeredMap : Map<string, React.Dispatch<any>> | null = RegisteredMap.registeredMap;
 
-    register(stateId:string, setState:React.Dispatch<any>){
-        this.registeredMap?.set(stateId, setState)
+    register(setState:React.Dispatch<any>){
+      
 
         this.setUpdateStateToAllChildren(this,setState);
     
         this.addSetState(setState);
-      console.log(stateId)
+
     }
 
     setUpdateStateToAllChildren(object :any, setState:React.Dispatch<any>) {
@@ -70,8 +70,7 @@ class State {
 
    
 
-   update(setState:React.Dispatch<any>){
-    this.addSetState(setState);
+   update(){
    
     this.StatesMap?.get(this.stateId)?.map((item)=>{
       item(uuidv4());
@@ -86,18 +85,15 @@ class Product extends State{
   _increment : number = 0;
 
 
-  incrementNumber(stateId:string){
+  incrementNumber(){
 
-    let updateState = this.registeredMap?.get(stateId);
+    // let updateState = this.registeredMap?.get(stateId);
   
     this._increment++;
 
 
-    console.log(updateState)
-
-    if(updateState){
-    this.update(updateState);
-    }
+    this.update();
+    
     
   }
 
@@ -108,18 +104,18 @@ class GlobalState extends State{
 
    products : Product[] = [new Product(), new Product];
 
-   incrementNumber(stateId:string){
+   incrementNumber(){
 
-    let updateState = this.registeredMap?.get(stateId);
+    // let updateState = this.registeredMap?.get(stateId);
   
     this._increment++;
 
 
-    console.log(updateState)
+    // console.log(updateState)
 
-    if(updateState){
-    this.update(updateState);
-    }
+    // if(updateState){
+    this.update();
+    // }
     
   }
 }

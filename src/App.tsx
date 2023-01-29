@@ -15,12 +15,12 @@ function App() {
    useEffect(()=>{
     let uuid = uuidv4();
     setStateId(uuid)
-    state.register(uuid,setUpdateState);
+    state.register(setUpdateState);
      
    },[])
 
    function increment(){
-      state.incrementNumber(stateId);
+      state.incrementNumber();
    }
 
   return (
