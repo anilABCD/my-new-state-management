@@ -35,7 +35,9 @@ function App() {
 
         <button onClick={increment} >Hello world</button>
 
-      <Products></Products>
+      { state.products.length > 1 && <Products></Products>}
+      { state.products.length > 1 && <Products></Products>}
+      { state.products.length > 1 && <Products></Products>}
 
       <Products></Products>
 

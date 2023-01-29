@@ -13,24 +13,32 @@ class State {
     registeredMap : Map<string, React.Dispatch<any>> | null = RegisteredMap.registeredMap;
 
     register(setState:React.Dispatch<any>){
-      
-
-        this.setUpdateStateToAllChildren(this,setState);
-    
+        this.setUpdateStateToAllChildren(this,setState, false);
         this.addSetState(setState);
-
     }
 
-    setUpdateStateToAllChildren(object :any, setState:React.Dispatch<any>) {
+    unRegister(setState:React.Dispatch<any>){
+      this.setUpdateStateToAllChildren(this,setState, true);
+      this.removeSetState(setState)
+    }
+
+    setUpdateStateToAllChildren(object :any, setState:React.Dispatch<any>, shouldDelete :boolean) {
      Object.keys(object).map((item,index)=>{
       let someObject :any = object;
        if( Array.isArray(someObject[item])){
-         this.setUpdateStateToAllChildren(someObject[item], setState);
+         this.setUpdateStateToAllChildren(someObject[item], setState, shouldDelete);
        }
        else{
+        if(shouldDelete == false) {
         if(someObject[item].addSetState){
           someObject[item].addSetState(setState);
         }
+      }
+      else{
+        if(someObject[item].removeSetState){
+         someObject[item].removeSetState(setState)
+        }
+      }
        }
      })
    }
@@ -68,10 +76,31 @@ class State {
     
    }
 
+   removeSetState(setState:React.Dispatch<any>){
+    let states = this.StatesMap?.get(this.stateId);
+ 
+    if(states){
+   
+     for(let i =0;i<states.length; i++){
+       if(states[i] == setState){
+        states.splice(states.indexOf(states[i]), 1);
+        break;
+       }
+     }
+
+    }
+    console.log( JSON.stringify( this.StatesMap?.get(this.stateId)?.length));
+  
+ }
+
    update(){
    
     this.StatesMap?.get(this.stateId)?.map((item)=>{
-      item(uuidv4());
+       if(item){ item(uuidv4());}
+
+       console.log(item)
+
+       console.log( JSON.stringify( this.StatesMap?.get(this.stateId)?.length));
     }
     )
    }

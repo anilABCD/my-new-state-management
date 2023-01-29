@@ -12,6 +12,10 @@ function Products(props: Props) {
 
     useEffect(()=>{
         globalState.register( setUpdateState);
+
+        return () => {
+           globalState.unRegister(setUpdateState);
+        }
     },[])
 
     return (
