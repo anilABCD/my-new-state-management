@@ -68,8 +68,6 @@ class State {
     
    }
 
-   
-
    update(){
    
     this.StatesMap?.get(this.stateId)?.map((item)=>{
@@ -86,15 +84,10 @@ class Product extends State{
 
 
   incrementNumber(){
-
-    // let updateState = this.registeredMap?.get(stateId);
   
     this._increment++;
-
-
+    
     this.update();
-    
-    
   }
 
 }
@@ -104,20 +97,18 @@ class GlobalState extends State{
 
    products : Product[] = [new Product(), new Product];
 
+   newProduce : Product = new Product();
+
    incrementNumber(){
 
-    // let updateState = this.registeredMap?.get(stateId);
-  
+    this.products.splice(1,1);
+
     this._increment++;
 
-
-    // console.log(updateState)
-
-    // if(updateState){
     this.update();
-    // }
     
   }
+
 }
 
 let globalState = new GlobalState() ;

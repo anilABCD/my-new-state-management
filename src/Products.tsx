@@ -9,11 +9,8 @@ interface Props {}
 function Products(props: Props) {
 
     const [updateState, setUpdateState] = useState<string>("");
-    // let [stateId, setStateId] = useState<string>("");
-    // console.log(stateId)
+
     useEffect(()=>{
-        // let uuid = uuidv4();
-        // setStateId(uuid);
         globalState.register( setUpdateState);
     },[])
 

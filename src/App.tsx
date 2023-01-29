@@ -9,12 +9,10 @@ import Products from './Products';
 function App() {
 
   let [updateState, setUpdateState] = useState<string>("");
-  let [stateId, setStateId] = useState<string>("");
+
    let state = GlobalState;
    
    useEffect(()=>{
-    let uuid = uuidv4();
-    setStateId(uuid)
     state.register(setUpdateState);
      
    },[])

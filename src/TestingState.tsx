@@ -14,8 +14,7 @@ function TestingState(props: Props) {
     let state  = globalState;
 
     useEffect( () =>{
-        let uuid = uuidv4();
-        // setStateId(uuid)
+   
         state.register(setUpdateState);
     }
     ,[]);
