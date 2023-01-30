@@ -20,7 +20,12 @@ function App() {
    },[])
 
    function increment(){
+      // option one to update ;
       state.incrementNumber();
+
+      // option two to update ... 
+      state._increment+=25;
+      state.update();
    }
 
   return (
