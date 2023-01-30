@@ -14,7 +14,9 @@ function App() {
    
    useEffect(()=>{
     state.register(setUpdateState);
-     
+     return () =>{
+        state.unRegister(setUpdateState);
+     }
    },[])
 
    function increment(){
@@ -37,7 +39,7 @@ function App() {
 
       { state.products.length > 1 && <Products></Products>}
       { state.products.length > 1 && <Products></Products>}
-      { state.products.length > 1 && <Products></Products>}
+       <Products></Products>
 
       <Products></Products>
 

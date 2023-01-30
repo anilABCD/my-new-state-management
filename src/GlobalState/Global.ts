@@ -13,12 +13,14 @@ class State {
     registeredMap : Map<string, React.Dispatch<any>> | null = RegisteredMap.registeredMap;
 
     register(setState:React.Dispatch<any>){
-        this.setUpdateStateToAllChildren(this,setState, false);
+        // for regestiring into deeper tree ... 
+        // this.setUpdateStateToAllChildren(this,setState, false);
         this.addSetState(setState);
     }
 
     unRegister(setState:React.Dispatch<any>){
-      this.setUpdateStateToAllChildren(this,setState, true);
+      // for unregistering from deeper tree ... 
+      // this.setUpdateStateToAllChildren(this,setState, true);
       this.removeSetState(setState)
     }
 

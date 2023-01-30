@@ -11,10 +11,12 @@ function Products(props: Props) {
     const [updateState, setUpdateState] = useState<string>("");
 
     useEffect(()=>{
-        globalState.register( setUpdateState);
+        globalState.products.forEach((item) => item.register(setUpdateState));
+        globalState.register(setUpdateState)
 
         return () => {
-           globalState.unRegister(setUpdateState);
+            globalState.unRegister(setUpdateState);
+            globalState.products.forEach((item) => item.unRegister(setUpdateState));
         }
     },[])
 
