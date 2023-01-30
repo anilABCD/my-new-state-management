@@ -26,7 +26,7 @@ class State {
       if(traverse){
       this.setUpdateStateToAllChildren(this,setState, true);
       }
-      
+
       this.removeSetState(setState)
     }
 
@@ -48,6 +48,8 @@ class State {
         }
       }
        }
+
+       return 1;
      })
    }
 

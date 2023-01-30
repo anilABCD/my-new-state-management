@@ -6,16 +6,18 @@ import globalState from './GlobalState/Global'
 interface Props {}
 
 function TestingState(props: Props) {
-    const {} = props
 
     const [updateState, setUpdateState]  = useState<string>("");
-    let [stateId, setStateId] = useState<string>("");
   
     let state  = globalState;
 
     useEffect( () =>{
    
         state.register(setUpdateState);
+
+        return ()=>{
+            state.unRegister(setUpdateState);
+        }
     }
     ,[]);
 
