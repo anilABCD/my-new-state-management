@@ -22,6 +22,7 @@ function App() {
    function increment(){
       // option one to update ;
       state.incrementNumber();
+      // using this.update in incrementNumber function(). 
 
       // option two to update ... 
       state._increment+=25;

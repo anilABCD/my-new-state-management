@@ -12,15 +12,21 @@ class State {
 
     registeredMap : Map<string, React.Dispatch<any>> | null = RegisteredMap.registeredMap;
 
-    register(setState:React.Dispatch<any>){
+    register(setState:React.Dispatch<any>, traverse : boolean=false){
         // for regestiring into deeper tree ... 
-        // this.setUpdateStateToAllChildren(this,setState, false);
+        if(traverse) {
+        this.setUpdateStateToAllChildren(this,setState, false);
+        }
+        
         this.addSetState(setState);
     }
 
-    unRegister(setState:React.Dispatch<any>){
+    unRegister(setState:React.Dispatch<any>,traverse : boolean=false){
       // for unregistering from deeper tree ... 
-      // this.setUpdateStateToAllChildren(this,setState, true);
+      if(traverse){
+      this.setUpdateStateToAllChildren(this,setState, true);
+      }
+
       this.removeSetState(setState)
     }
 
@@ -96,15 +102,11 @@ class State {
  }
 
    update(){
-   
     this.StatesMap?.get(this.stateId)?.map((item)=>{
        if(item){ item(uuidv4());}
-
-       console.log(item)
-
-       console.log( JSON.stringify( this.StatesMap?.get(this.stateId)?.length));
-    }
-    )
+      //  console.log(item)  
+    })
+    console.log(JSON.stringify(this.StatesMap?.get(this.stateId)?.length));
    }
 
 }
