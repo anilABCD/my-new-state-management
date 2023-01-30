@@ -17,7 +17,7 @@ class State {
         if(traverse) {
         this.setUpdateStateToAllChildren(this,setState, false);
         }
-        
+
         this.addSetState(setState);
     }
 
@@ -26,7 +26,7 @@ class State {
       if(traverse){
       this.setUpdateStateToAllChildren(this,setState, true);
       }
-
+      
       this.removeSetState(setState)
     }
 
